@@ -1,0 +1,72 @@
+name: dc-k8s
+
+# topology based on 15 nodes used for the SReX demo on MPLS technologies
+# same set-up as referred to in the presentation
+# common SR chassis type: SR-1s
+
+mgmt:
+  network: kind        # management network name
+  ipv4_subnet: 172.18.100.0/16       # ipv4 range
+
+# based on SROS 21.10R2
+topology:
+  defaults:
+    kind: srl
+  kinds:
+    srl:
+      image: ghcr.io/nokia/srlinux:21.6.4
+      type: ixrd3
+
+  nodes:
+
+# DC Network nodes
+    LEAF-DC-1:
+      kind: srl
+      mgmt_ipv4: 172.18.100.121 
+    LEAF-DC-2:
+      kind: srl
+      mgmt_ipv4: 172.18.100.122         
+    SPINE-DC-1:
+      kind: srl
+      mgmt_ipv4: 172.18.100.123 
+    SPINE-DC-2:
+      kind: srl
+      mgmt_ipv4: 172.18.100.124 
+    BORDER-DC:
+      kind: srl
+      mgmt_ipv4: 172.18.100.125 
+
+# Nodes for testing
+    prometheus:
+      kind: linux
+      image: prom/prometheus:latest
+      mgmt_ipv4: 172.18.100.115
+      binds: 
+        - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro        
+      user: 65534:65534
+      ports:
+        - 9091:9090
+
+# Grafana Dashboard
+    grafana:
+      kind: linux
+      image: grafana/grafana:latest
+      mgmt_ipv4: 172.18.100.116
+      binds:
+        - ./grafana/datasources/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+        - ./grafana/dashboard:/etc/grafana/provisioning/dashboard:ro
+      ports:
+        - 3000:3000
+
+  links:      
+# Datacenter
+    # leaf <-> spine1 connections
+    - endpoints: ["LEAF-DC-1:e1-1", "SPINE-DC-1:e1-1"]
+    - endpoints: ["LEAF-DC-2:e1-1", "SPINE-DC-1:e1-2"]
+    - endpoints: ["BORDER-DC:e1-1", "SPINE-DC-1:e1-10"]
+
+    # leaf <-> spine2 connections
+    - endpoints: ["LEAF-DC-1:e1-2", "SPINE-DC-2:e1-1"]
+    - endpoints: ["LEAF-DC-2:e1-2", "SPINE-DC-2:e1-2"]
+    - endpoints: ["BORDER-DC:e1-2", "SPINE-DC-2:e1-10"]
+

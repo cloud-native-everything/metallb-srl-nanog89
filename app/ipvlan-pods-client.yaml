@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ipvlan-1001-deploy
+spec:
+  selector:
+    matchLabels:
+      app: ipvlan-1001-alpine
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ipvlan-1001-alpine
+      annotations:
+        k8s.v1.cni.cncf.io/networks: ipvlan-1001
+    spec:
+      containers:
+        - name: ipvlan-1001-alpine-1
+          image: pinrojas/cassowary:0.33
+          imagePullPolicy: Never
+          command:
+          - /bin/sh
+          - -c
+          - |
+            until false; do cassowary run -u http://10.254.254.240:8080 -c 4 -n 4 -p pushsvc-cust1-to-dc:9091; sleep 2; done
+          env:
+          - name: K8S_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName       

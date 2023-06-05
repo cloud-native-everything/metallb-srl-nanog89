@@ -1,0 +1,20 @@
+all:
+  children:
+    linux:
+      hosts:
+        clab-dc-k8s-grafana:
+          ansible_host: 172.18.100.116
+        clab-dc-k8s-prometheus:
+          ansible_host: 172.18.100.115
+    srl:
+      hosts:
+        clab-dc-k8s-BORDER-DC:
+          ansible_host: 172.18.100.125
+        clab-dc-k8s-LEAF-DC-1:
+          ansible_host: 172.18.100.121
+        clab-dc-k8s-LEAF-DC-2:
+          ansible_host: 172.18.100.122
+        clab-dc-k8s-SPINE-DC-1:
+          ansible_host: 172.18.100.123
+        clab-dc-k8s-SPINE-DC-2:
+          ansible_host: 172.18.100.124

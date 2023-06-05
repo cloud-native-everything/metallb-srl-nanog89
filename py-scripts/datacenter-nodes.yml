@@ -1,0 +1,13 @@
+---
+username: admin
+password: admin
+port: 830
+gnmi_port: 57400
+insecure: True
+skip_verify: True
+hostkey_verify: False
+switches:
+  srl:
+    clab-dc-k8s-LEAF-DC-1: None
+    clab-dc-k8s-LEAF-DC-2: None
+    clab-dc-k8s-BORDER-DC: None

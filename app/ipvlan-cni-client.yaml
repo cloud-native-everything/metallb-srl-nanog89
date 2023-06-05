@@ -1,0 +1,41 @@
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: ipvlan-1001
+spec:
+  config: '{
+  "cniVersion": "0.4.0",
+  "name": "ipvlan-1001",
+  "plugins": [{
+    "type": "ipvlan",
+    "master": "VLAN-1001",
+    "ipam": {
+      "type": "host-local",
+      "ranges": [
+          [ 
+            { 
+              "subnet": "10.1.4.0/24",
+					    "rangeStart": "10.1.4.20",
+					    "rangeEnd": "10.1.4.50",
+					    "gateway": "10.1.4.1"              
+            }
+          ]
+        ],
+        "routes": [ 
+          {  
+            "dst": "10.6.4.0/24", 
+            "gw": "10.1.4.1" 
+          },
+          {  
+            "dst": "10.7.4.0/24", 
+            "gw": "10.1.4.1" 
+          },
+          {  
+            "dst": "10.254.254.240/28", 
+            "gw": "10.1.4.1" 
+          }
+        ]
+    }
+  }]
+}'

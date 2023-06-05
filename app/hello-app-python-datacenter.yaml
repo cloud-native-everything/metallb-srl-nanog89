@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: py-tftpboot
+data:
+  http_server.py: |
+    import os
+    from http.server import HTTPServer, BaseHTTPRequestHandler
+    class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+      def do_GET(self):
+          self.send_response(200)
+          self.send_header("Content-type", "text/html")
+          self.end_headers()
+          hostname = os.environ['HOSTNAME']
+          worker = os.environ['K8S_NODE_NAME']
+          text = f"K8s Node: {worker} - Hostname: {hostname}\n"
+          self.wfile.write(bytes(text, "utf8"))    
+    port = int(os.environ['HTTP_APP_PORT'])
+    httpd = HTTPServer(('0.0.0.0', port), SimpleHTTPRequestHandler)
+    httpd.serve_forever()
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-node-py-deploy
+spec:
+  selector:
+    matchLabels:
+      app: hello-node-python
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: hello-node-python
+    spec:
+      volumes:
+      - name: tftpboot	  # The name of the volume
+        configMap:
+          name: py-tftpboot
+      containers:
+        - name: hello-node-python-app
+          image: python:latest
+          imagePullPolicy: Never
+          command: ["python3"]
+          args: ["/tftpboot/http_server.py"]
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+          - name: K8S_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          - name: HTTP_APP_PORT
+            value: "8080"                
+          volumeMounts:
+          - name: tftpboot
+            mountPath: /tftpboot

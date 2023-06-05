@@ -1,0 +1,51 @@
+network: "kind"  #do not change unless you do that in all the files
+prefix: "172.18.0.0/16" #do not change unless you do that in all the files
+clabTopology: "./topo.yml"  
+clusters:
+    - name: "client"
+      kubeconfig: ".kube/config-client"
+      config: "./kind/cluster_client.yaml"
+      image: "kindest/node:v1.23.17"
+      imagesToLoad:
+        - image: alpine:latest
+        - image: rogerw/cassowary:v0.14.1
+        - image: pinrojas/cassowary:0.33
+        - image: prom/pushgateway:latest
+        - image: ghcr.io/k8snetworkplumbingwg/multus-cni:snapshot  
+      resources:
+        - app: "./kind/multus-daemonset.yml"
+        - app: "./kind/cni-install.yml"
+        - app: "./app/ipvlan-cni-client.yaml"
+        - app: "./app/ipvlan-pods-client.yaml"
+        - app: "./app/prom.yaml"
+    - name: "datacenter"
+      kubeconfig: ".kube/config-datacenter"
+      config: "./kind/cluster_datacenter.yaml"
+      image: "kindest/node:v1.23.17"
+      imagesToLoad:
+        - image: alpine:latest
+        - image: python:latest
+        - image: quay.io/metallb/speaker:v0.12.1
+        - image: quay.io/metallb/controller:v0.12.1
+      resources:
+        - app: "./metallb/metallb-namespace.yaml"
+        - app: "./metallb/metallb-manifest.yaml"
+        - app: "./metallb/metallb-bgp-setup.yaml"
+        - app: "./app/hello-app-python-datacenter.yaml"
+        - app: "./app/hello-app-lb-datacenter.yaml"
+# this is the info clab tool will use to interconnect clusters and containerlab instances
+links:
+    - k8sNode: "client-control-plane:e1-1"
+      clabNode: "clab-dc-k8s-BORDER-DC:e1-10"
+      k8sIpv4: "192.168.201.101/24"
+      k8sIpv4Gw: "172.18.0.1"  # Multus would required to download files from github
+      ipvlanMaster:
+        - vlan: 1001
+    - k8sNode: "datacenter-worker:e1-1"
+      clabNode: "clab-dc-k8s-LEAF-DC-1:e1-10"
+      k8sIpv4: "192.168.101.101/24"
+      k8sIpv4Gw: "192.168.101.1"
+    - k8sNode: "datacenter-worker2:e1-1"
+      clabNode: "clab-dc-k8s-LEAF-DC-2:e1-10"
+      k8sIpv4: "192.168.101.102/24"
+      k8sIpv4Gw: "192.168.101.1"
