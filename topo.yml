@@ -36,7 +36,7 @@ topology:
       kind: srl
       mgmt_ipv4: 172.18.100.125 
 
-# Nodes for testing
+# Prometheus Node
     prometheus:
       kind: linux
       image: prom/prometheus:latest
@@ -57,6 +57,25 @@ topology:
         - ./grafana/dashboard:/etc/grafana/provisioning/dashboard:ro
       ports:
         - 3000:3000
+# GNMIc server for telemetry
+    gnmic:
+      kind: linux
+      image: ghcr.io/karimra/gnmic
+      mgmt_ipv4: 172.18.100.117
+      binds:
+        - ./gnmic/gnmic.yaml:/app/gnmic.yaml:ro
+        - /var/run/docker.sock:/var/run/docker.sock
+      cmd: '--config /app/gnmic.yaml --log subscribe'
+
+# Service discovery   
+    consul-agent:
+      kind: linux
+      image: consul:latest
+      mgmt_ipv4: 172.18.100.118
+      ports:
+        - 8500:8500
+        - 8600:8600/udp
+      cmd: 'agent -server -ui -bind=127.0.0.1 -node=server-1 -bootstrap-expect=1 -client=0.0.0.0'
 
   links:      
 # Datacenter

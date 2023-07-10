@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: ipvlan-1001-alpine
-  replicas: 1
+  replicas: 10
   template:
     metadata:
       labels:

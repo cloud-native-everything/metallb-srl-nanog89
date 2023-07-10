@@ -8,7 +8,7 @@ datasources:
   - name: Prometheus
     type: prometheus
     orgId: 1
-    url: http://172.18.100.115:9090
+    url: http://clab-dc-k8s-prometheus:9090
     password:
     user:
     database:

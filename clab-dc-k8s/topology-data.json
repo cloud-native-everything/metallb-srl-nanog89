@@ -1,0 +1,348 @@
+{
+  "name": "dc-k8s",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "kind",
+        "bridge": "br-082bcb8e5250",
+        "ipv4-subnet": "172.18.100.0/16",
+        "ipv4-gw": "172.18.0.1",
+        "mtu": "1500",
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "BORDER-DC": {
+      "index": "0",
+      "shortname": "BORDER-DC",
+      "longname": "clab-dc-k8s-BORDER-DC",
+      "fqdn": "BORDER-DC.dc-k8s.io",
+      "group": "",
+      "labdir": "/root/metallb-srl-nanog89/clab-dc-k8s/BORDER-DC",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:21.6.4",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.18.100.125",
+      "mgmt-ipv4-prefix-length": 16,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-082bcb8e5250",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/metallb-srl-nanog89/clab-dc-k8s/BORDER-DC",
+        "clab-node-name": "BORDER-DC",
+        "clab-node-type": "ixrd3",
+        "clab-topo-file": "/root/metallb-srl-nanog89/topo.yml",
+        "containerlab": "dc-k8s"
+      }
+    },
+    "LEAF-DC-1": {
+      "index": "1",
+      "shortname": "LEAF-DC-1",
+      "longname": "clab-dc-k8s-LEAF-DC-1",
+      "fqdn": "LEAF-DC-1.dc-k8s.io",
+      "group": "",
+      "labdir": "/root/metallb-srl-nanog89/clab-dc-k8s/LEAF-DC-1",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:21.6.4",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.18.100.121",
+      "mgmt-ipv4-prefix-length": 16,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-082bcb8e5250",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/metallb-srl-nanog89/clab-dc-k8s/LEAF-DC-1",
+        "clab-node-name": "LEAF-DC-1",
+        "clab-node-type": "ixrd3",
+        "clab-topo-file": "/root/metallb-srl-nanog89/topo.yml",
+        "containerlab": "dc-k8s"
+      }
+    },
+    "LEAF-DC-2": {
+      "index": "2",
+      "shortname": "LEAF-DC-2",
+      "longname": "clab-dc-k8s-LEAF-DC-2",
+      "fqdn": "LEAF-DC-2.dc-k8s.io",
+      "group": "",
+      "labdir": "/root/metallb-srl-nanog89/clab-dc-k8s/LEAF-DC-2",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:21.6.4",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.18.100.122",
+      "mgmt-ipv4-prefix-length": 16,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-082bcb8e5250",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/metallb-srl-nanog89/clab-dc-k8s/LEAF-DC-2",
+        "clab-node-name": "LEAF-DC-2",
+        "clab-node-type": "ixrd3",
+        "clab-topo-file": "/root/metallb-srl-nanog89/topo.yml",
+        "containerlab": "dc-k8s"
+      }
+    },
+    "SPINE-DC-1": {
+      "index": "3",
+      "shortname": "SPINE-DC-1",
+      "longname": "clab-dc-k8s-SPINE-DC-1",
+      "fqdn": "SPINE-DC-1.dc-k8s.io",
+      "group": "",
+      "labdir": "/root/metallb-srl-nanog89/clab-dc-k8s/SPINE-DC-1",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:21.6.4",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.18.100.123",
+      "mgmt-ipv4-prefix-length": 16,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-082bcb8e5250",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/metallb-srl-nanog89/clab-dc-k8s/SPINE-DC-1",
+        "clab-node-name": "SPINE-DC-1",
+        "clab-node-type": "ixrd3",
+        "clab-topo-file": "/root/metallb-srl-nanog89/topo.yml",
+        "containerlab": "dc-k8s"
+      }
+    },
+    "SPINE-DC-2": {
+      "index": "4",
+      "shortname": "SPINE-DC-2",
+      "longname": "clab-dc-k8s-SPINE-DC-2",
+      "fqdn": "SPINE-DC-2.dc-k8s.io",
+      "group": "",
+      "labdir": "/root/metallb-srl-nanog89/clab-dc-k8s/SPINE-DC-2",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:21.6.4",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.18.100.124",
+      "mgmt-ipv4-prefix-length": 16,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-082bcb8e5250",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/root/metallb-srl-nanog89/clab-dc-k8s/SPINE-DC-2",
+        "clab-node-name": "SPINE-DC-2",
+        "clab-node-type": "ixrd3",
+        "clab-topo-file": "/root/metallb-srl-nanog89/topo.yml",
+        "containerlab": "dc-k8s"
+      }
+    },
+    "consul-agent": {
+      "index": "5",
+      "shortname": "consul-agent",
+      "longname": "clab-dc-k8s-consul-agent",
+      "fqdn": "consul-agent.dc-k8s.io",
+      "group": "",
+      "labdir": "/root/metallb-srl-nanog89/clab-dc-k8s/consul-agent",
+      "kind": "linux",
+      "image": "consul:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.18.100.118",
+      "mgmt-ipv4-prefix-length": 16,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-082bcb8e5250",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/metallb-srl-nanog89/clab-dc-k8s/consul-agent",
+        "clab-node-name": "consul-agent",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/metallb-srl-nanog89/topo.yml",
+        "containerlab": "dc-k8s"
+      }
+    },
+    "gnmic": {
+      "index": "6",
+      "shortname": "gnmic",
+      "longname": "clab-dc-k8s-gnmic",
+      "fqdn": "gnmic.dc-k8s.io",
+      "group": "",
+      "labdir": "/root/metallb-srl-nanog89/clab-dc-k8s/gnmic",
+      "kind": "linux",
+      "image": "ghcr.io/karimra/gnmic",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.18.100.117",
+      "mgmt-ipv4-prefix-length": 16,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-082bcb8e5250",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/metallb-srl-nanog89/clab-dc-k8s/gnmic",
+        "clab-node-name": "gnmic",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/metallb-srl-nanog89/topo.yml",
+        "containerlab": "dc-k8s"
+      }
+    },
+    "grafana": {
+      "index": "7",
+      "shortname": "grafana",
+      "longname": "clab-dc-k8s-grafana",
+      "fqdn": "grafana.dc-k8s.io",
+      "group": "",
+      "labdir": "/root/metallb-srl-nanog89/clab-dc-k8s/grafana",
+      "kind": "linux",
+      "image": "grafana/grafana:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.18.100.116",
+      "mgmt-ipv4-prefix-length": 16,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-082bcb8e5250",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/metallb-srl-nanog89/clab-dc-k8s/grafana",
+        "clab-node-name": "grafana",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/metallb-srl-nanog89/topo.yml",
+        "containerlab": "dc-k8s"
+      }
+    },
+    "prometheus": {
+      "index": "8",
+      "shortname": "prometheus",
+      "longname": "clab-dc-k8s-prometheus",
+      "fqdn": "prometheus.dc-k8s.io",
+      "group": "",
+      "labdir": "/root/metallb-srl-nanog89/clab-dc-k8s/prometheus",
+      "kind": "linux",
+      "image": "prom/prometheus:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.18.100.115",
+      "mgmt-ipv4-prefix-length": 16,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-082bcb8e5250",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/root/metallb-srl-nanog89/clab-dc-k8s/prometheus",
+        "clab-node-name": "prometheus",
+        "clab-node-type": "",
+        "clab-topo-file": "/root/metallb-srl-nanog89/topo.yml",
+        "containerlab": "dc-k8s"
+      }
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "LEAF-DC-1",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:be:01:bb",
+        "peer": "z"
+      },
+      "z": {
+        "node": "SPINE-DC-1",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:ae:3f:b6",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "LEAF-DC-2",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:ab:98:0e",
+        "peer": "z"
+      },
+      "z": {
+        "node": "SPINE-DC-1",
+        "interface": "e1-2",
+        "mac": "aa:c1:ab:44:1c:19",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "BORDER-DC",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:d3:04:37",
+        "peer": "z"
+      },
+      "z": {
+        "node": "SPINE-DC-1",
+        "interface": "e1-10",
+        "mac": "aa:c1:ab:21:a3:77",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "LEAF-DC-1",
+        "interface": "e1-2",
+        "mac": "aa:c1:ab:12:6f:8f",
+        "peer": "z"
+      },
+      "z": {
+        "node": "SPINE-DC-2",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:98:79:84",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "LEAF-DC-2",
+        "interface": "e1-2",
+        "mac": "aa:c1:ab:69:9f:28",
+        "peer": "z"
+      },
+      "z": {
+        "node": "SPINE-DC-2",
+        "interface": "e1-2",
+        "mac": "aa:c1:ab:d4:c0:b2",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "BORDER-DC",
+        "interface": "e1-2",
+        "mac": "aa:c1:ab:91:92:6c",
+        "peer": "z"
+      },
+      "z": {
+        "node": "SPINE-DC-2",
+        "interface": "e1-10",
+        "mac": "aa:c1:ab:71:55:d5",
+        "peer": "a"
+      }
+    }
+  ]
+}

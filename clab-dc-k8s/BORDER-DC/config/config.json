@@ -4,10 +4,10 @@
       "generated-by": "SRLINUX",
       "name": "",
       "comment": "",
-      "created": "2023-06-04T22:58:45.151Z",
+      "created": "2023-06-08T15:35:42.382Z",
       "release": "v21.6.4",
       "enabled-yang-features": ["srl_nokia-features:anycast-gw", "srl_nokia-features:bridged", "srl_nokia-features:evpn", "srl_nokia-features:evpn-advertise-arp-nd-only-with-mac-table-entry", "srl_nokia-features:evpn-mh-pref-alg", "srl_nokia-features:evpn-mh-single-active", "srl_nokia-features:fixed", "srl_nokia-features:future-21-6", "srl_nokia-features:future-21-6-2", "srl_nokia-features:future-21-6-3", "srl_nokia-features:lacp-fallback", "srl_nokia-features:lag", "srl_nokia-features:mirroring", "srl_nokia-features:platform-7220-d3", "srl_nokia-features:port-breakout", "srl_nokia-features:ra-guard", "srl_nokia-features:reload-delay", "srl_nokia-features:storm-control", "srl_nokia-features:trident3", "srl_nokia-features:vxlan", "srl_nokia-features:warm-reboot"],
-      "checksum": "d2890e88566a5797$fe8c1b930a5adc557fedda1331ff25349934a4b1"
+      "checksum": "f6ce18418685fa63$b75393186a181320e9dd6f520c9cb8ec12b3a58f"
     },
     "build": {
       "git-branch": "SRL_21_6_B1",
@@ -2107,6 +2107,11 @@
           "admin-state": "enable"
         }
       ]
+    },
+    "srl_nokia-load-balancing:load-balancing": {
+      "hash-options": {
+        "source-address": true
+      }
     },
     "srl_nokia-lldp:lldp": {
       "admin-state": "enable",

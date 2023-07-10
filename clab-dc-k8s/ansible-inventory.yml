@@ -2,6 +2,10 @@ all:
   children:
     linux:
       hosts:
+        clab-dc-k8s-consul-agent:
+          ansible_host: 172.18.100.118
+        clab-dc-k8s-gnmic:
+          ansible_host: 172.18.100.117
         clab-dc-k8s-grafana:
           ansible_host: 172.18.100.116
         clab-dc-k8s-prometheus:

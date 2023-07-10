@@ -16,7 +16,7 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 # Install containerlab
-bash -c "$(curl -sL https://get.containerlab.dev)" -- -v 0.25.1
+bash -c "$(curl -sL https://get.containerlab.dev)"
 
 # Install go
 if command -v dnf >/dev/null 2>&1; then

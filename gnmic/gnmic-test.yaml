@@ -1,0 +1,30 @@
+username: admin
+password: admin
+skip-verify: true
+log: true
+
+targets:
+  clab-dc-k8s-LEAF-DC-1:
+    subscriptions:
+      - sub1
+  clab-dc-k8s-LEAF-DC-2:
+    subscriptions:
+      - sub1
+
+subscriptions:
+  # Add subscriptions configuration here
+  # e.g:
+  sub1:
+    paths:
+      - /interface[name=ethernet-1/10]/statistics
+    stream-mode: sample
+    sample-interval: 10s
+    encoding: ascii
+
+
+processors:
+  group_by_interface:
+    event-group-by:
+      tags:
+        - interface_name    
+
