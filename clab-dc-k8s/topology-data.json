@@ -9,6 +9,7 @@
         "bridge": "br-082bcb8e5250",
         "ipv4-subnet": "172.18.100.0/16",
         "ipv4-gw": "172.18.0.1",
+        "ipv6-gw": "fe80::42:bcff:fef6:7861",
         "mtu": "1500",
         "external-access": true
       }
@@ -264,13 +265,13 @@
       "a": {
         "node": "LEAF-DC-1",
         "interface": "e1-1",
-        "mac": "aa:c1:ab:be:01:bb",
+        "mac": "aa:c1:ab:7a:6d:8b",
         "peer": "z"
       },
       "z": {
         "node": "SPINE-DC-1",
         "interface": "e1-1",
-        "mac": "aa:c1:ab:ae:3f:b6",
+        "mac": "aa:c1:ab:68:3b:6f",
         "peer": "a"
       }
     },
@@ -278,13 +279,13 @@
       "a": {
         "node": "LEAF-DC-2",
         "interface": "e1-1",
-        "mac": "aa:c1:ab:ab:98:0e",
+        "mac": "aa:c1:ab:b5:90:70",
         "peer": "z"
       },
       "z": {
         "node": "SPINE-DC-1",
         "interface": "e1-2",
-        "mac": "aa:c1:ab:44:1c:19",
+        "mac": "aa:c1:ab:6b:d7:77",
         "peer": "a"
       }
     },
@@ -292,13 +293,13 @@
       "a": {
         "node": "BORDER-DC",
         "interface": "e1-1",
-        "mac": "aa:c1:ab:d3:04:37",
+        "mac": "aa:c1:ab:cc:60:cb",
         "peer": "z"
       },
       "z": {
         "node": "SPINE-DC-1",
         "interface": "e1-10",
-        "mac": "aa:c1:ab:21:a3:77",
+        "mac": "aa:c1:ab:f2:b8:72",
         "peer": "a"
       }
     },
@@ -306,13 +307,13 @@
       "a": {
         "node": "LEAF-DC-1",
         "interface": "e1-2",
-        "mac": "aa:c1:ab:12:6f:8f",
+        "mac": "aa:c1:ab:be:cf:ba",
         "peer": "z"
       },
       "z": {
         "node": "SPINE-DC-2",
         "interface": "e1-1",
-        "mac": "aa:c1:ab:98:79:84",
+        "mac": "aa:c1:ab:48:f6:af",
         "peer": "a"
       }
     },
@@ -320,13 +321,13 @@
       "a": {
         "node": "LEAF-DC-2",
         "interface": "e1-2",
-        "mac": "aa:c1:ab:69:9f:28",
+        "mac": "aa:c1:ab:6c:a0:21",
         "peer": "z"
       },
       "z": {
         "node": "SPINE-DC-2",
         "interface": "e1-2",
-        "mac": "aa:c1:ab:d4:c0:b2",
+        "mac": "aa:c1:ab:fe:1d:c0",
         "peer": "a"
       }
     },
@@ -334,13 +335,13 @@
       "a": {
         "node": "BORDER-DC",
         "interface": "e1-2",
-        "mac": "aa:c1:ab:91:92:6c",
+        "mac": "aa:c1:ab:19:f1:aa",
         "peer": "z"
       },
       "z": {
         "node": "SPINE-DC-2",
         "interface": "e1-10",
-        "mac": "aa:c1:ab:71:55:d5",
+        "mac": "aa:c1:ab:da:ba:7c",
         "peer": "a"
       }
     }

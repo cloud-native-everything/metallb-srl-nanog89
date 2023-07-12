@@ -6,7 +6,7 @@ name: dc-k8s
 
 mgmt:
   network: kind        # management network name
-  ipv4_subnet: 172.18.100.0/16       # ipv4 range
+  ipv4-subnet: 172.18.100.0/16       # ipv4 range
 
 # based on SROS 21.10R2
 topology:
@@ -22,25 +22,25 @@ topology:
 # DC Network nodes
     LEAF-DC-1:
       kind: srl
-      mgmt_ipv4: 172.18.100.121 
+      mgmt-ipv4: 172.18.100.121 
     LEAF-DC-2:
       kind: srl
-      mgmt_ipv4: 172.18.100.122         
+      mgmt-ipv4: 172.18.100.122         
     SPINE-DC-1:
       kind: srl
-      mgmt_ipv4: 172.18.100.123 
+      mgmt-ipv4: 172.18.100.123 
     SPINE-DC-2:
       kind: srl
-      mgmt_ipv4: 172.18.100.124 
+      mgmt-ipv4: 172.18.100.124 
     BORDER-DC:
       kind: srl
-      mgmt_ipv4: 172.18.100.125 
+      mgmt-ipv4: 172.18.100.125 
 
 # Prometheus Node
     prometheus:
       kind: linux
       image: prom/prometheus:latest
-      mgmt_ipv4: 172.18.100.115
+      mgmt-ipv4: 172.18.100.115
       binds: 
         - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro        
       user: 65534:65534
@@ -51,7 +51,7 @@ topology:
     grafana:
       kind: linux
       image: grafana/grafana:latest
-      mgmt_ipv4: 172.18.100.116
+      mgmt-ipv4: 172.18.100.116
       binds:
         - ./grafana/datasources/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
         - ./grafana/dashboard:/etc/grafana/provisioning/dashboard:ro
@@ -61,7 +61,7 @@ topology:
     gnmic:
       kind: linux
       image: ghcr.io/karimra/gnmic
-      mgmt_ipv4: 172.18.100.117
+      mgmt-ipv4: 172.18.100.117
       binds:
         - ./gnmic/gnmic.yaml:/app/gnmic.yaml:ro
         - /var/run/docker.sock:/var/run/docker.sock
@@ -71,7 +71,7 @@ topology:
     consul-agent:
       kind: linux
       image: consul:latest
-      mgmt_ipv4: 172.18.100.118
+      mgmt-ipv4: 172.18.100.118
       ports:
         - 8500:8500
         - 8600:8600/udp
